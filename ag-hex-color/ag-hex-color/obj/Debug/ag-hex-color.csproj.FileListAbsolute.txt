@@ -1,0 +1,11 @@
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\bin\Debug\ag-hex-color.exe.config
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\bin\Debug\ag-hex-color.exe
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\bin\Debug\ag-hex-color.pdb
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\obj\Debug\ag-hex-color.csproj.AssemblyReference.cache
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\obj\Debug\ag-hex-color.csproj.SuggestedBindingRedirects.cache
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\obj\Debug\Genetic.Panel.resources
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\obj\Debug\ag_hex_color.Properties.Resources.resources
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\obj\Debug\ag-hex-color.csproj.GenerateResource.cache
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\obj\Debug\ag-hex-color.csproj.CoreCompileInputs.cache
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\obj\Debug\ag-hex-color.exe
+C:\Users\Batman\Documents\repos\ag-hex-color\ag-hex-color\ag-hex-color\obj\Debug\ag-hex-color.pdb
