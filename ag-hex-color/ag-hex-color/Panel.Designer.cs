@@ -33,10 +33,10 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SelecaoCor = new System.Windows.Forms.Button();
             this.BF1 = new System.Windows.Forms.Panel();
-            this.ButtonStart = new System.Windows.Forms.Button();
+            this.BtnProxGeracao = new System.Windows.Forms.Button();
             this.timerSelecao = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.InputQuantidadePopulacao = new System.Windows.Forms.TextBox();
             this.BF2 = new System.Windows.Forms.Panel();
             this.BF3 = new System.Windows.Forms.Panel();
             this.BF4 = new System.Windows.Forms.Panel();
@@ -66,13 +66,16 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BFB = new System.Windows.Forms.Label();
+            this.BFG = new System.Windows.Forms.Label();
+            this.BFR = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.labelGeracao = new System.Windows.Forms.Label();
-            this.BFB = new System.Windows.Forms.Label();
-            this.BFG = new System.Windows.Forms.Label();
-            this.BFR = new System.Windows.Forms.Label();
+            this.btnAteMatchMax = new System.Windows.Forms.Button();
+            this.MaxGeracoes = new System.Windows.Forms.TextBox();
+            this.CB_Paint = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Aptidao.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -109,19 +112,19 @@
             this.BF1.Size = new System.Drawing.Size(50, 50);
             this.BF1.TabIndex = 3;
             // 
-            // ButtonStart
+            // BtnProxGeracao
             // 
-            this.ButtonStart.Location = new System.Drawing.Point(6, 19);
-            this.ButtonStart.Name = "ButtonStart";
-            this.ButtonStart.Size = new System.Drawing.Size(98, 23);
-            this.ButtonStart.TabIndex = 4;
-            this.ButtonStart.Text = "Próxima geração";
-            this.ButtonStart.UseVisualStyleBackColor = true;
-            this.ButtonStart.Click += new System.EventHandler(this.ButtonStart_Click);
+            this.BtnProxGeracao.Location = new System.Drawing.Point(6, 19);
+            this.BtnProxGeracao.Name = "BtnProxGeracao";
+            this.BtnProxGeracao.Size = new System.Drawing.Size(98, 23);
+            this.BtnProxGeracao.TabIndex = 4;
+            this.BtnProxGeracao.Text = "Próxima geração";
+            this.BtnProxGeracao.UseVisualStyleBackColor = true;
+            this.BtnProxGeracao.Click += new System.EventHandler(this.Acao_GeraNovaGeracao);
             // 
             // timerSelecao
             // 
-            this.timerSelecao.Interval = 1000;
+            this.timerSelecao.Interval = 1;
             this.timerSelecao.Tick += new System.EventHandler(this.timerSelecao_Tick);
             // 
             // label1
@@ -133,14 +136,15 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "População:";
             // 
-            // textBox2
+            // InputQuantidadePopulacao
             // 
-            this.textBox2.Location = new System.Drawing.Point(73, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBox2.Size = new System.Drawing.Size(53, 20);
-            this.textBox2.TabIndex = 6;
-            this.textBox2.Text = "1024";
+            this.InputQuantidadePopulacao.Location = new System.Drawing.Point(73, 25);
+            this.InputQuantidadePopulacao.Name = "InputQuantidadePopulacao";
+            this.InputQuantidadePopulacao.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.InputQuantidadePopulacao.Size = new System.Drawing.Size(53, 20);
+            this.InputQuantidadePopulacao.TabIndex = 6;
+            this.InputQuantidadePopulacao.Text = "1024";
+            this.InputQuantidadePopulacao.TextChanged += new System.EventHandler(this.InputQuantidadePopulacao_TextChanged);
             // 
             // BF2
             // 
@@ -344,7 +348,7 @@
             // 
             this.groupBox1.Controls.Add(this.CutOff);
             this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.InputQuantidadePopulacao);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 142);
             this.groupBox1.Name = "groupBox1";
@@ -372,7 +376,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.ButtonStart);
+            this.groupBox2.Controls.Add(this.CB_Paint);
+            this.groupBox2.Controls.Add(this.MaxGeracoes);
+            this.groupBox2.Controls.Add(this.btnAteMatchMax);
+            this.groupBox2.Controls.Add(this.BtnProxGeracao);
             this.groupBox2.Location = new System.Drawing.Point(12, 248);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 100);
@@ -393,6 +400,33 @@
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Indivíduo de melhor aptidão:";
+            // 
+            // BFB
+            // 
+            this.BFB.AutoSize = true;
+            this.BFB.Location = new System.Drawing.Point(101, 58);
+            this.BFB.Name = "BFB";
+            this.BFB.Size = new System.Drawing.Size(17, 13);
+            this.BFB.TabIndex = 13;
+            this.BFB.Text = "B:";
+            // 
+            // BFG
+            // 
+            this.BFG.AutoSize = true;
+            this.BFG.Location = new System.Drawing.Point(101, 39);
+            this.BFG.Name = "BFG";
+            this.BFG.Size = new System.Drawing.Size(21, 13);
+            this.BFG.TabIndex = 12;
+            this.BFG.Text = "G: ";
+            // 
+            // BFR
+            // 
+            this.BFR.AutoSize = true;
+            this.BFR.Location = new System.Drawing.Point(101, 21);
+            this.BFR.Name = "BFR";
+            this.BFR.Size = new System.Drawing.Size(21, 13);
+            this.BFR.TabIndex = 11;
+            this.BFR.Text = "R: ";
             // 
             // groupBox4
             // 
@@ -448,32 +482,33 @@
             this.labelGeracao.TabIndex = 10;
             this.labelGeracao.Text = "Geração:";
             // 
-            // BFB
+            // btnAteMatchMax
             // 
-            this.BFB.AutoSize = true;
-            this.BFB.Location = new System.Drawing.Point(101, 58);
-            this.BFB.Name = "BFB";
-            this.BFB.Size = new System.Drawing.Size(17, 13);
-            this.BFB.TabIndex = 13;
-            this.BFB.Text = "B:";
+            this.btnAteMatchMax.Location = new System.Drawing.Point(6, 49);
+            this.btnAteMatchMax.Name = "btnAteMatchMax";
+            this.btnAteMatchMax.Size = new System.Drawing.Size(98, 23);
+            this.btnAteMatchMax.TabIndex = 5;
+            this.btnAteMatchMax.Text = "Até a geração:";
+            this.btnAteMatchMax.UseVisualStyleBackColor = true;
+            this.btnAteMatchMax.Click += new System.EventHandler(this.btnAteMatchMax_Click);
             // 
-            // BFG
+            // MaxGeracoes
             // 
-            this.BFG.AutoSize = true;
-            this.BFG.Location = new System.Drawing.Point(101, 39);
-            this.BFG.Name = "BFG";
-            this.BFG.Size = new System.Drawing.Size(21, 13);
-            this.BFG.TabIndex = 12;
-            this.BFG.Text = "G: ";
+            this.MaxGeracoes.Location = new System.Drawing.Point(110, 52);
+            this.MaxGeracoes.Name = "MaxGeracoes";
+            this.MaxGeracoes.Size = new System.Drawing.Size(37, 20);
+            this.MaxGeracoes.TabIndex = 9;
+            this.MaxGeracoes.Text = "100";
             // 
-            // BFR
+            // CB_Paint
             // 
-            this.BFR.AutoSize = true;
-            this.BFR.Location = new System.Drawing.Point(101, 21);
-            this.BFR.Name = "BFR";
-            this.BFR.Size = new System.Drawing.Size(21, 13);
-            this.BFR.TabIndex = 11;
-            this.BFR.Text = "R: ";
+            this.CB_Paint.AutoSize = true;
+            this.CB_Paint.Location = new System.Drawing.Point(9, 77);
+            this.CB_Paint.Name = "CB_Paint";
+            this.CB_Paint.Size = new System.Drawing.Size(122, 17);
+            this.CB_Paint.TabIndex = 10;
+            this.CB_Paint.Text = "Pintar cada geração";
+            this.CB_Paint.UseVisualStyleBackColor = true;
             // 
             // Panel
             // 
@@ -498,6 +533,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -515,10 +551,10 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button SelecaoCor;
         private System.Windows.Forms.Panel BF1;
-        private System.Windows.Forms.Button ButtonStart;
+        private System.Windows.Forms.Button BtnProxGeracao;
         private System.Windows.Forms.Timer timerSelecao;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox InputQuantidadePopulacao;
         private System.Windows.Forms.Panel BF2;
         private System.Windows.Forms.Panel BF3;
         private System.Windows.Forms.Panel BF4;
@@ -555,6 +591,9 @@
         private System.Windows.Forms.Label BFB;
         private System.Windows.Forms.Label BFG;
         private System.Windows.Forms.Label BFR;
+        private System.Windows.Forms.TextBox MaxGeracoes;
+        private System.Windows.Forms.Button btnAteMatchMax;
+        private System.Windows.Forms.CheckBox CB_Paint;
     }
 }
 
